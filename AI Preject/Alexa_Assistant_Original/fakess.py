@@ -25,9 +25,10 @@ except Exception as p:
 
 
 # 0:alex , 17:stacey , other
-vno=17
+# 0:David, 1,2: Hazel, Zira
+vno=1
 var_pass = "iit1istheaim"
-engine=pyttsx3.init()
+engine=pyttsx3.init() #sapi5 can be used
 voices=engine.getProperty('voices')
 engine.setProperty('voice',voices[vno].id)
 print("ACTIVATED",voices[vno].id)
@@ -36,6 +37,9 @@ engine.setProperty('rate',250)
 
 
 def speak(talk):
+    """
+    Makes the AI speak
+    """
     engine.say(talk)
     engine.runAndWait()
 
@@ -149,8 +153,8 @@ def TaskExecution():
             speak("Should I set it for eh em or Pm ?")
             ampm = str(takeCommand())
             print("Setting your alarm for",alarmH,":",alarmM,ampm.upper())
-            # speak("Ok sir,Setting your alarm for",alarmH,alarmM,ampm)
-            speak("ok ,setting alarm")
+            speak(f"Ok sir,Setting your alarm for,{alarmH},{alarmM},{ampm}")
+            # speak("ok ,setting alarm")
             print("Alarm set...")
             speak("Alarm set...")
 
@@ -192,12 +196,12 @@ def TaskExecution():
         elif 'play' in said:
             song = said.replace('play', '')
             speak("ok,playing" + song)
-            pywhatkit.playonyt(song)
+            pywhatkit.playonyt(song) #plays the particular song on yt
 
         elif 'programming joke' in said:
             print(pyjokes.get_joke())
             speak(pyjokes.get_joke())
-            said = takeCommand()
+            said = takeCommand() #takes the answer of a joke question
 
         elif 'read' in said:
             speak('ok, reading the pdf you have attached')
@@ -295,7 +299,7 @@ def TaskExecution():
         elif "location of" in said:
             said = said.split(" ")
             location = said[1] #obtain place name
-            speak("Hold on, I will show you where it is" + location)
+            speak("Hold on, I will show you where" + location +  "is")
             os.system("google-chrome https://www.google.nl/maps/place/" + location)
 
         if "weather" in said:
@@ -353,7 +357,6 @@ def TaskExecution():
                 # speak("Say that again,Please...")
 
 if __name__ == '__main__':
-
     while True:
         try:
             permission = takeCommand()

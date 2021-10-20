@@ -21,4 +21,5 @@ A point to note here is that you will have to install PyAudio package manually i
 
 6. OS - The Operating sysytem module 
  it helps in connecting the local device to our program like few directories or something else , if you want to coonect some local device files like documents, pdfs, songs, images, videoes etc we use os module
+ 
  7 smtplib - It will allow us to send emails from one gmail id to another , but you will have to enable "less secure apps for the sender email", this may put your sender email id at risk, hence be cautious
