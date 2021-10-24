@@ -1,0 +1,6 @@
+MNIST is the so called Hello World of ML
+
+It is a set of 70,000 small images of digits handwritten by high school students
+
+All digits are represented by the number of respective digits they represent 
+784 features this comes from 28*28 pixel images
