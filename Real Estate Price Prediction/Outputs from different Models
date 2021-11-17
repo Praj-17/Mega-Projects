@@ -1,8 +1,11 @@
 Model Outputs
-
+Based on the Test Data
 Linear Regression
 Mean:              -25.56966124163754    75%
 Standard Deviation  10.978667517764917
+Mean Absolute Error 3.9051448026275084
+Mean Squared Error  29.416365467452838 
+Root Mean Suare Error 5.423685598138302
       
 Decission Tree
 Mean:              -18.022161585365854   82%
