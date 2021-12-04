@@ -1,0 +1,52 @@
+#### Converting string or categorical tables into numbers
+#Regions
+Western - 0 
+Eastern - 1
+Norhtern- 2
+Southern -3
+
+# Cities
+City
+0	Pune
+1	Mumbai
+2	Nashik
+2	Nashik
+3	Nagpur
+4	Aurangabad
+5	Panaji
+6	Ahmedabad
+7	Surat
+8	Gandhinagar
+9	Vadodara
+10	Bangalore
+11	Mysore
+12	Chennai
+13	Madurai
+14	Ooty
+15	Hyderabad
+16	Coimbatore
+17	Puducherry
+18	Kochi
+19	Thiruvananthpuram
+20	New Delhi
+21	Shimla
+22	Chandigarh
+40	Dehradun
+39	Jammu
+23	Agra
+24	Kanpur
+25	Ghaziabad
+26	Jaipur
+28	Kolkata
+29	Patna
+30	Darjeeling
+31	Ranchi
+32	Bhubaneshwar
+33	Howrah
+34	Puri
+35	Kharagpur
+36	Durgapur
+38	Jamshedpur
+
+
+
