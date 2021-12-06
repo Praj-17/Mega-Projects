@@ -42,15 +42,46 @@ str2 = "5,6,3,2,1,5,5,3,5,4,6,5,5,4,3,6,2,4,4,5,6,4,3,2,2,1,3,2,2,3,1,5,5,3,2,3,
 outlet =[i for i in ((str2).split(','))]
 outlets = dict(zip(city,outlet ))
 Cities = dict(zip(number, city))
-western_cities = {0: 'Pune', 1: 'Mumbai', 2: 'Nashik', 3: 'Nagpur', 4: 'Aurangabad', 5: 'Panaji', 6: 'Ahmedabad', 7: 'Surat', 8: 'Gandhinagar', 9: 'Vadodara'}
+western_cities = {0: 'Pune', 
+                  1: 'Mumbai', 
+                  2: 'Nashik', 
+                  3: 'Nagpur', 
+                  4: 'Aurangabad', 
+                  5: 'Panaji', 
+                  6: 'Ahmedabad', 
+                  7: 'Surat', 
+                  8: 'Gandhinagar', 
+                  9: 'Vadodara'}
+
+Eastern_cities = {}
+
+Northern_cities = {}
+
+Southern_cities = {}
 
 print(Cities)
 print("\n______Welcome to the counter counting problem_______\n")
 print("________________Region___________")
 print("Please input the region")
-print("""Western - 0\nEastern - 1\nNorhtern- 2\nSouthern- 3""")
+
+print("""0)Western
+         1)Eastern 
+         2)Norhtern 
+         3)Southern""")
+
 r =int(input("input: "))
 print("___________city___________")
+if r == 0:
+  print(Western_cities)
+elif r == 1:
+  print(Eastern_cities)
+elif r == 2:
+  print(Northern_cities)
+elif r == 3:
+  print(Southern_cities)
+else:
+  print("Wrong INPut")
+  
 print(Cities)
 print("Please select a city")
 c = int(input("input: "))
