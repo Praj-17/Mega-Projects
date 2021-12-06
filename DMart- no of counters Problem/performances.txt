@@ -1,0 +1,11 @@
+Here we are  enlisting the mean Squared losses of the various Regression models that we
+HAve tried to implement
+
+Logistic Regression = -21.59374
+Linear Regression  = -1.3431518489511391
+Ridge Regression = -1.339419483811758
+Lasso Regression = -1.3418256899682635
+Binary Tree Regression = -2.239583333333333
+Random Forest Regression = -1.6290210416666668
+
+Hence It is concluded that the top 3 Regressors are Linearm , Ridge and Lasso

@@ -1,10 +1,14 @@
 
-from Linear_Regression import mean_mse
+from numpy.core.fromnumeric import mean
+from sklearn import linear_model
+from Linear_Regression import mean_mse,model
 from Ridge_Regression import model_2
 from Lasso_Regression import model_3
 
+
 import pandas as pd
 import numpy as np
+print("\n______________neg_mean_squared_errors______________\n")
 loss ={"Linear": mean_mse, "Ridge":model_2.best_score_, "Lasso":model_3.best_score_ }
 print(loss)
 
@@ -12,12 +16,68 @@ data = pd.read_csv("dmart_processed.csv")
 X = data.iloc[:,:-1]
 Y = data.iloc[:,-1:]
 
+print("\n______________Collinearities___________\n")
+print(X.iloc[:,1:].corr())
+
+
+from sklearn.model_selection import StratifiedShuffleSplit
+split = StratifiedShuffleSplit(n_splits=1, test_size= 0.2, random_state =42)
+for train_index, test_index in split.split(X, X['Region']):
+    y_test = X.loc[train_index]
+    X_test = X.loc[test_index]
+    
 from sklearn.model_selection import train_test_split
-x_train, x_test, y_train, y_test = train_test_split(X,Y, test_size= 0.3)
+x_train, x_test, y_train, y_test = train_test_split(X,Y, test_size= 0.2)
 
+from sklearn.model_selection import StratifiedShuffleSplit
+split = StratifiedShuffleSplit(n_splits=1, test_size= 0.2, random_state =42)
+for train_index, test_index in split.split(X, X['Region']):
+    x_train = X.loc[train_index]
+    X_test = X.loc[test_index]
 prediction_ridge  = model_2.predict(x_test)
+prediction_lasso  = model_3.predict(x_test)
+prediction_linear = model.predict (x_test)
+prediction_lasso.resize(96,1)
 
 
+from sklearn.metrics import r2_score
+"""
+What is R2 score???
+r2 score is a better way to define the correctnees of a regression model,
+It is read as "R square score"
+Let us understand ot mathematically,
+
+R^2 = 1 - SSresidual/SSmean
+where ,
+SSresidual  = sum((y-y')^2)/n
+SSmean = sum((y-mean(y))^2)/n
+y = actual value, y' = predicted value, n=  number of records
+
+there for the formula becomes
+R^2 = 1 - (sum((y-y')^2))/sum((y-mean(y))^2)
+Now, since SSmean is always greater than SSresidual , the value of the term,
+
+0 <= SSresidual/SSmean >= 1
+lies between 0 and 1 and hence after substracting it by one we get the actual r^2 
+
+Hence the smalled the value of SSresidual/SSmean the greater the value of R^2 , 
+
+The best model has R^2 closer to 1 and adn worst model has R^2 closer to 0
+"""
+linear_score = r2_score(y_test, prediction_linear)
+Ridge_score = r2_score (y_test, prediction_ridge)
+lasso_score = r2_score (y_test, prediction_lasso)
+
+# Now we are tyring to predict even better by taking the avg of the all 3 predictions
+"""
+By averaging over all the models, we can even out the overestimation and underestimation. ... So, if we can form a lot of models and take the average over them, we can expect that the resulting prediction is more robust than the individual prediction.
+
+"""
+
+
+r2_scores ={"Linear": linear_score, "Ridge":Ridge_score, "Lasso":lasso_score}
+print("\n______________R2_Scores______________\n")
+print(r2_scores)
 # y_test = np.array(y_test)
 # prediction_lasso.resize(144,1)
 
@@ -67,7 +127,12 @@ x_list = [r, m, int(final_outlet), mean_sales, mean_profits,c]
 x_list = np.array(x_list)
 x_list.resize(1,6)
 
+
 prediction_ridge  = model_2.predict(x_list)
 
+
+# 0,5,5,622.36,124.472,0,24
+# 0,6,5,548.86,109.772,0,22
+# 0,8,5,490.15,98.03,0,21
 print("\n_________The predicted value is______\n")
 print(f"\n______{int(prediction_ridge)}_______\n")
