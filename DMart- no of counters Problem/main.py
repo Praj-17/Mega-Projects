@@ -34,6 +34,7 @@ split = StratifiedShuffleSplit(n_splits=1, test_size= 0.2, random_state =42)
 for train_index, test_index in split.split(X, X['Region']):
     x_train = X.loc[train_index]
     X_test = X.loc[test_index]
+    
 prediction_ridge  = model_2.predict(x_test)
 prediction_lasso  = model_3.predict(x_test)
 prediction_linear = model.predict (x_test)
@@ -93,7 +94,7 @@ User will have to give input of 3 parameters
 2. Month - month number for eg..1 for jan, 2 for feb
 3. City - the city in which the mall is
   """
-Regions = {1:"Western", 2: "Eastern ",3: "Norhtern",4: "Southern" }
+Regions = {0:"Western", 2: "Eastern ",3: "Norhtern",4: "Southern" }
 str1 = """Pune Mumbai Nashik Nagpur Aurangabad Panaji Ahmedabad Surat Gandhinagar Vadodara Bangalore Mysore Chennai Madurai Ooty Hyderabad Coimbatore Puducherry Kochi Thiruvananthpu NewDelhi Shimla Chandigarh Dehradun Jammu Agra Kanpur Ghaziabad Jaipur Kolkata Patna Darjeeling Ranchi Bhubaneshwar Howrah Puri Kharagpur Durgapur2 jamshedpur """
 number = list(np.arange(39))
 city = [i for i in ((str1).split())]
@@ -129,18 +130,25 @@ print("""0)Western
          2)Norhtern 
          3)Southern""")
 
-r =int(input("input: "))
-print("___________city___________")
-if r == 0:
-  print(Western_cities)
-elif r == 1:
-  print(Eastern_cities)
-elif r == 2:
-  print(Northern_cities)
-elif r == 3:
-  print(Southern_cities)
-else:
-  print("Wrong INPut")
+while True:
+  r =int(input("input: "))
+
+  print("___________city___________")
+  if r == 0:
+    print(western_cities)
+    break
+  elif r == 1:
+    print(Eastern_cities)
+    break
+  elif r == 2:
+    print(Northern_cities)
+    break
+  elif r == 3:
+    print(Southern_cities)
+    break
+  else:
+    print("Wrong Input")
+    
   
 print(Cities)
 print("Please select a city")
