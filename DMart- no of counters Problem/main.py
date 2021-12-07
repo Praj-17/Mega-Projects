@@ -1,6 +1,4 @@
 
-from numpy.core.fromnumeric import mean
-from sklearn import linear_model
 from Linear_Regression import mean_mse,model
 from Ridge_Regression import model_2
 from Lasso_Regression import model_3
@@ -8,36 +6,31 @@ from Lasso_Regression import model_3
 
 import pandas as pd
 import numpy as np
-print("\n______________neg_mean_squared_errors______________\n")
+#Perfomance metircs
+print("\n______________mean_squared_errors______________\n")
 loss ={"Linear": mean_mse, "Ridge":model_2.best_score_, "Lasso":model_3.best_score_ }
 print(loss)
 
 data = pd.read_csv("dmart_processed.csv")
-X = data.iloc[:,:-1]
-Y = data.iloc[:,-1:]
-
-print("\n______________Collinearities___________\n")
-print(X.iloc[:,1:].corr())
+X = data.iloc[:,:-1] #Independatant variables arrays
+Y = data.iloc[:,-1:] #Dependant Variable #arrays
 
 
-from sklearn.model_selection import StratifiedShuffleSplit
-split = StratifiedShuffleSplit(n_splits=1, test_size= 0.2, random_state =42)
-for train_index, test_index in split.split(X, X['Region']):
-    y_test = X.loc[train_index]
-    X_test = X.loc[test_index]
-    
+
+#Dicing dataset into 2 parts train and test
 from sklearn.model_selection import train_test_split
 x_train, x_test, y_train, y_test = train_test_split(X,Y, test_size= 0.2)
 
+#Koi ek type puri tarajh se train me na chalajaye
 from sklearn.model_selection import StratifiedShuffleSplit
 split = StratifiedShuffleSplit(n_splits=1, test_size= 0.2, random_state =42)
 for train_index, test_index in split.split(X, X['Region']):
     x_train = X.loc[train_index]
-    X_test = X.loc[test_index]
+    x_test = X.loc[test_index]
     
-prediction_ridge  = model_2.predict(x_test)
-prediction_lasso  = model_3.predict(x_test)
-prediction_linear = model.predict (x_test)
+prediction_ridge  = model_2.predict(x_test) #arrays (96,1)
+prediction_lasso  = model_3.predict(x_test) #arrays(96,1)
+prediction_linear = model.predict (x_test)  #arrays(96,)
 prediction_lasso.resize(96,1)
 
 
@@ -94,15 +87,16 @@ User will have to give input of 3 parameters
 2. Month - month number for eg..1 for jan, 2 for feb
 3. City - the city in which the mall is
   """
-Regions = {0:"Western", 2: "Eastern ",3: "Norhtern",4: "Southern" }
+Regions = {0:"Western",  1: "Eastern ",2: "Norhtern",3: "Southern" }
 str1 = """Pune Mumbai Nashik Nagpur Aurangabad Panaji Ahmedabad Surat Gandhinagar Vadodara Bangalore Mysore Chennai Madurai Ooty Hyderabad Coimbatore Puducherry Kochi Thiruvananthpu NewDelhi Shimla Chandigarh Dehradun Jammu Agra Kanpur Ghaziabad Jaipur Kolkata Patna Darjeeling Ranchi Bhubaneshwar Howrah Puri Kharagpur Durgapur2 jamshedpur """
-number = list(np.arange(39))
-city = [i for i in ((str1).split())]
+number = list(np.arange(39)) #array
+city = [i for i in ((str1).split())] #python list
 
 str2 = "5,6,3,2,1,5,5,3,5,4,6,5,5,4,3,6,2,4,4,5,6,4,3,2,2,1,3,2,2,3,1,5,5,3,2,3,2,1,1,2,2,2,"
-outlet =[i for i in ((str2).split(','))]
-outlets = dict(zip(city,outlet ))
-Cities = dict(zip(number, city))
+outlet =[i for i in ((str2).split(','))] #python list
+outlets = dict(zip(city,outlet )) #python dictioniaries
+Cities = dict(zip(number, city))  #python dictioniaries
+
 western_cities = {0: 'Pune', 
                   1: 'Mumbai', 
                   2: 'Nashik', 
@@ -174,14 +168,29 @@ while True:
     break
   else:
     print("Wrong Input")
-    
-  
-print(Cities)
-print("Please select a city")
-c = int(input("input: "))
-print("__________Month__________")
-print("Please provide the number of month in which you want to employe the employee")
-m  = int(input())
+while True:
+  print("Please select a city")
+  c = int(input("input: "))
+  if r == 0 and c in range(10):
+    break
+  elif r == 1 and c in range(11,20):
+    break
+  elif r == 2 and c in range(21,30):
+    break
+  elif r == 3 and c in range(31,40):
+    break
+  else:
+    print("No city in this particular region")
+while True:
+  print("__________Month__________")
+  print("Please provide the number of month in which you want to employe the employee")
+  m  = int(input())
+  if m in range(1,12):
+    break
+  else:
+    print("Please provide a valid month number")
+
+
 print("_________Thankyou for your input_______")
 print("____Please wait while we compute your output___")
 
@@ -200,4 +209,4 @@ prediction_ridge  = model_2.predict(x_list)
 # 0,6,5,548.86,109.772,0,22
 # 0,8,5,490.15,98.03,0,21
 print("\n_________The predicted value is______\n")
-print(f"\n______{int(prediction_ridge)}_______\n")
+print(f"\n______{int(prediction_ridge)} Couters needed_______\n")
