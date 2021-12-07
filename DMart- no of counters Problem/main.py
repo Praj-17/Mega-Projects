@@ -114,18 +114,44 @@ western_cities = {0: 'Pune',
                   8: 'Gandhinagar', 
                   9: 'Vadodara'}
 
-Eastern_cities = {}
+Eastern_cities = {0: 'Patna',
+                  1: 'Darjeeling',
+                  2: 'Ranchi',
+                  3: 'Bhubaneshwar',
+                  4: 'Howrah',
+                  5: 'Puri',
+                  6: 'Kharagpur',
+                  7: 'Durgapur2',
+                  8: 'jamshedpur'}
 
-Northern_cities = {}
+Northern_cities = {0: 'NewDelhi',
+                   1: 'Shimla',
+                   2: 'Chandigarh',
+                   3: 'Dehradun',
+                   4: 'Jammu',
+                   5: 'Agra',
+                   6: 'Kanpur',
+                   7: 'Ghaziabad',
+                   8: 'Jaipur',
+                   9: 'Kolkata'}
 
-Southern_cities = {}
+Southern_cities = {0: 'Bangalore',
+                   1: 'Mysore',
+                   2: 'Chennai',
+                   3: 'Madurai',
+                   4: 'Ooty',
+                   5: 'Hyderabad',
+                   6: 'Coimbatore',
+                   7: 'Puducherry',
+                   8: 'Kochi',
+                   9: 'Thiruvananthpu'}
 
-print(Cities)
 print("\n______Welcome to the counter counting problem_______\n")
 print("________________Region___________")
 print("Please input the region")
 
-print("""0)Western
+print("""
+         0)Western
          1)Eastern 
          2)Norhtern 
          3)Southern""")
