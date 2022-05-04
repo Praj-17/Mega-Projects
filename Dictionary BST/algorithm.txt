@@ -1,0 +1,27 @@
+1. We have implemented a class called "dict" that represents a dictionary.
+2. This class contains the whole Binary Search Tree. 
+3. We have implemented the follwoing functions 
+    void input(); - Takes the input string
+    void create_root(dict*,dict*); - Creates a root node.
+    void check_same(dict*,dict*); - checks if 2 strings are same or not.
+    void input_display(); - Wrapper over dict_display()
+    void display(dict*); - prints all keywords along with their values ALPHABETICALLY.
+    void input_remove(); - wrapper over dict_remove
+    dict* remove(dict*,string); -  removes a keyword from the dictionary.
+    dict* findmin(dict*); - Finds the min value in the tree.
+    void input_find(); - wrapper over dict_find
+    dict* find(dict*,string); finds a particular keyword in the dict
+    void input_update(); - wrapper above the update function
+    dict* update(dict*,string); - updates a particular keyword in the dict
+
+4. All the functions implemented above are working exactly similar to the Binary Search tree. 
+
+5. The Input_(functions) functions are wrappers above the class dict functions. They are used to enhance the user ecperience and make the code more readable. also, they serve in better understanding of both developers and users.
+
+6. Now in the main function, we have defined an integer choice and a dictionary "d". Now this dictionary will be used to store all the keywords and their values.
+
+7. Then at last we have defined a do-while loop. The reason to choose a do while loop was to make sure that the user can enter the choice at least for the first time. Even if somehow the while loop is broken. 
+8. Now the user is able to use all the features of the dictionary.
+9. end of the program.
+
+
