@@ -2,12 +2,12 @@ from math import trunc
 import pyttsx3
 import datetime
 import speech_recognition as sr
-import wikipedia
-import webbrowser
-import os
-import smtplib
+# import wikipedia
+# import webbrowser
+# import os
+# import smtplib
 
-from wikipedia import exceptions
+# from wikipedia import exceptions
 engine = pyttsx3.init('sapi5') # Speech API
 voices = engine.getProperty('voices')
 engine.setProperty('voice', voices[0].id) # setting David's voice onto the engine
