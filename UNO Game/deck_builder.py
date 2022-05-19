@@ -87,6 +87,7 @@ def Build_Deck(n=1, same_deck=True):
         cards = []
         for sides in (Deck):
             card = Card(sides[0],sides[1]) 
+            card.fit()
             cards.append(card)
         return cards
         
@@ -100,6 +101,7 @@ def Build_Deck(n=1, same_deck=True):
             cards = []
             for sides in (Build_Deck()):
                 card = Card('card')
+                card.fit()
                 card.front, card.back = sides[0], sides[1]
                 cards.append(card)
             return cards
@@ -112,8 +114,9 @@ def Deck(n=1, same_deck=True):
     """
     cards = []
     deck = Build_Deck(n, same_deck)
+    print(deck)
     for i in deck:
             print("________________CARD______________")
-            card = cards.GetCard()
-            cards.append(cards.GetCard())
-    return 
+            cards.append(i.GetCard())
+    return cards
+

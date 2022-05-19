@@ -14,7 +14,7 @@ class Card:
         back_color = list(back.split("_"))[1]
         back_type = list(back.split("_"))[0]
         return back_color, back_type
-    def GetCard(self):
+    def fit(self):
         front_color, front_type = self.fronts()  
         back_color, back_type = self.backs()  
         self.front_color = front_color
