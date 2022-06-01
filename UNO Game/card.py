@@ -21,10 +21,3 @@ class Card:
         self.front_type = front_type
         self.back_color = back_color
         self.back_type = back_type
-        card = {
-            "front_color": front_color,
-            "front_type": front_type,
-            "back_color": back_color,
-            "back_type": back_type
-        }
-        return card
