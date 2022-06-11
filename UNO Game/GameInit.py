@@ -9,14 +9,14 @@ def player_names(no_of_palyers):
         return player_name_list
 
 class GameInit():
-    def get_player_names(self):
+    def input_player_names(self):
         self.player_names = player_names(self.no_of_players)
         return self.player_names
     def __init__(self, no_of_players, cards_per_player, n_decks=1) -> None:
         self.no_of_players = no_of_players
         self.cards_per_player = cards_per_player
         self.n_decks = n_decks
-        self.get_player_names()
+        self.input_player_names()
     def validate_cards_per_player(self):
         if type(self.cards_per_player) == int:
             if self.cards_per_player < 1:
@@ -29,9 +29,7 @@ class GameInit():
             raise TypeError("Cards per player must be an integer")
     
     def get_player_names(self):
-        self.player_names = player_names(self.no_of_players)
         return self.player_names
-
     def distribute_cards(self , deck=Deck().Get_Deck()):
         print("Distributing  Cards now, please wait...")
         if self.validate_cards_per_player() == True:
@@ -56,6 +54,11 @@ class Player():
     def __init__(self, name, cards_in_hand) -> None:
         self.name = name
         self.cards_in_hand = cards_in_hand
+    def name(self):
+        return self.name
+    def cards_in_hand(self):
+        return self.cards_in_hand
+    
 
     
    
