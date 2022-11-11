@@ -31,4 +31,4 @@ def main (image_path, output_name):
         cv2.waitKey(1)
         if  0xFF == ord('q'):
             break
-main(r'Images\2.jpg', "2.jpg")
+main(r'Images\1.jpg', "2.jpg")
